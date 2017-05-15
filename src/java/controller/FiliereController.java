@@ -1,6 +1,7 @@
 package controller;
 
 import bean.Filiere;
+import bean.Module;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
 import service.FiliereFacade;
@@ -25,8 +26,18 @@ public class FiliereController implements Serializable {
 
     @EJB
     private service.FiliereFacade ejbFacade;
+    @EJB
+    private service.ModuleFacade moduleFacade;
     private List<Filiere> items = null;
     private Filiere selected;
+
+    public List<Filiere> findFiliere(int x) {
+        return ejbFacade.findByType(x);
+    }
+    
+    public List<Module> findModByFilier(Filiere f,int numSemestre){
+        return moduleFacade.findByFiliere(f,numSemestre);
+    }
 
     public FiliereController() {
     }

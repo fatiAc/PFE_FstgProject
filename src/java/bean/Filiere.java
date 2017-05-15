@@ -27,9 +27,10 @@ public class Filiere implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String libelle;
+    private String abreviation;
     @OneToMany(mappedBy = "filiere")
     private List<Enseignant> enseignants;
-    private int type ;//1:TC ,2:licence ,3:cycle ,4:master ,5:doctorat
+    private int type ;//1:TC ,2:licence ,3:cycle ,4:master
     @ManyToOne
     private Departement departement;
     @OneToOne
@@ -40,6 +41,15 @@ public class Filiere implements Serializable {
     public List<Module> getModules() {
         return modules;
     }
+
+    public String getAbreviation() {
+        return abreviation;
+    }
+
+    public void setAbreviation(String abreviation) {
+        this.abreviation = abreviation;
+    }
+    
 
     public void setModules(List<Module> modules) {
         this.modules = modules;

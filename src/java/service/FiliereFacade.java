@@ -6,6 +6,7 @@
 package service;
 
 import bean.Filiere;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,11 @@ public class FiliereFacade extends AbstractFacade<Filiere> {
 
     public FiliereFacade() {
         super(Filiere.class);
+    }
+    
+    public List<Filiere> findByType(int x){
+        String requette="select f from Filiere f where f.type="+x;
+        return em.createQuery(requette).getResultList();
     }
     
 }
