@@ -1,6 +1,8 @@
 package controller;
 
+import bean.Filiere;
 import bean.Module;
+import bean.Semestre;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
 import service.ModuleFacade;
@@ -25,8 +27,17 @@ public class ModuleController implements Serializable {
 
     @EJB
     private service.ModuleFacade ejbFacade;
+    @EJB
+    private service.SemestreFacade semestreFacade;
     private List<Module> items = null;
     private Module selected;
+    private List<Semestre> semestres;
+    private Filiere filiere;
+    
+    public List<Semestre> findSemestreByFilr(Filiere f){
+        semestres.get(0).setFiliere(f);
+        return semestreFacade.findByFiliere(f);
+    }
 
     public ModuleController() {
     }
@@ -161,5 +172,23 @@ public class ModuleController implements Serializable {
         }
 
     }
+
+    public List<Semestre> getSemestres() {
+        return semestres=semestreFacade.findByFiliere(filiere);
+    }
+
+    public void setSemestres(List<Semestre> semestres) {
+        this.semestres = semestres;
+    }
+
+    public Filiere getFiliere() {
+        return filiere;
+    }
+
+    public void setFiliere(Filiere filiere) {
+        this.filiere = filiere;
+    }
+    
+    
 
 }

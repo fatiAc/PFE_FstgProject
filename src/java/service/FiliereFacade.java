@@ -31,8 +31,9 @@ public class FiliereFacade extends AbstractFacade<Filiere> {
     }
     
     public List<Filiere> findByType(int x){
-        String requette="select f from Filiere f where f.type="+x;
+        String requette="SELECT f FROM Filiere f WHERE f.type="+x;
+        System.out.println(requette);
         return em.createQuery(requette).getResultList();
-    }
+}
     
 }

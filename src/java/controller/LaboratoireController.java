@@ -27,7 +27,18 @@ public class LaboratoireController implements Serializable {
     private service.LaboratoireFacade ejbFacade;
     private List<Laboratoire> items = null;
     private Laboratoire selected;
+    private Laboratoire laboratoire;
+    private Boolean disabled=true;
 
+   
+    public void stockValue(Laboratoire labo) {
+        if(labo!=null&&labo.getId()!=null){
+            laboratoire = labo;
+            disabled = false;
+            System.out.println(disabled);
+        }
+    }
+    
     public LaboratoireController() {
     }
 
@@ -161,5 +172,23 @@ public class LaboratoireController implements Serializable {
         }
 
     }
+
+    public Laboratoire getLaboratoire() {
+        return laboratoire;
+    }
+
+    public void setLaboratoire(Laboratoire laboratoire) {
+        this.laboratoire = laboratoire;
+    }
+
+    public Boolean getDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    
 
 }

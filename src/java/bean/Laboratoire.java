@@ -6,10 +6,12 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -21,9 +23,12 @@ public class Laboratoire implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
+    private String Description;
+    @OneToMany(mappedBy = "laboratoire")
+    private List<EquipeRecherche> equipes;
     @OneToOne
     private Enseignant directeur;
 
@@ -31,6 +36,27 @@ public class Laboratoire implements Serializable {
         return directeur;
     }
 
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String Description) {
+        this.Description = Description;
+    }
+
+    public List<EquipeRecherche> getEquipes() {
+        return equipes;
+    }
+
+    public void setEquipes(List<EquipeRecherche> equipes) {
+        this.equipes = equipes;
+    }
+    
+
+    public Laboratoire() {
+    }
+
+   
     public void setDirecteur(Enseignant directeur) {
         this.directeur = directeur;
     }
@@ -73,7 +99,7 @@ public class Laboratoire implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Laboratoire[ id=" + id + " ]";
+        return nom;
     }
 
 }

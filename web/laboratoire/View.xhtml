@@ -14,6 +14,8 @@
                     <p:panelGrid columns="2" rendered="#{laboratoireController.selected != null}">
                         <h:outputText value="#{bundle.ViewLaboratoireLabel_directeur}"/>
                         <h:outputText value="#{laboratoireController.selected.directeur}" title="#{bundle.ViewLaboratoireTitle_directeur}"/>
+                        <h:outputText value="#{bundle.ViewLaboratoireLabel_description}"/>
+                        <h:outputText value="#{laboratoireController.selected.description}" title="#{bundle.ViewLaboratoireTitle_description}"/>
                         <h:outputText value="#{bundle.ViewLaboratoireLabel_nom}"/>
                         <h:outputText value="#{laboratoireController.selected.nom}" title="#{bundle.ViewLaboratoireTitle_nom}"/>
                         <h:outputText value="#{bundle.ViewLaboratoireLabel_id}"/>

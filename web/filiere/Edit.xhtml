@@ -12,6 +12,10 @@
             <h:form id="FiliereEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{filiereController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFiliereLabel_abreviation}" for="abreviation" />
+                        <p:inputText id="abreviation" value="#{filiereController.selected.abreviation}" title="#{bundle.EditFiliereTitle_abreviation}" />
+                        <p:outputLabel value="#{bundle.EditFiliereLabel_objectif}" for="objectif" />
+                        <p:inputText id="objectif" value="#{filiereController.selected.objectif}" title="#{bundle.EditFiliereTitle_objectif}" />
                         <p:outputLabel value="#{bundle.EditFiliereLabel_type}" for="type" />
                         <p:inputText id="type" value="#{filiereController.selected.type}" title="#{bundle.EditFiliereTitle_type}" />
                         <p:outputLabel value="#{bundle.EditFiliereLabel_responsableFiliere}" for="responsableFiliere" />

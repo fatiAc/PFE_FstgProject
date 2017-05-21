@@ -18,6 +18,8 @@
                                            var="filiereItem"
                                            itemValue="#{filiereItem}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEnseignantLabel_tel}" for="tel" />
+                        <p:inputText id="tel" value="#{enseignantController.selected.tel}" title="#{bundle.CreateEnseignantTitle_tel}" />
                         <p:outputLabel value="#{bundle.CreateEnseignantLabel_departement}" for="departement" />
                         <p:selectOneMenu id="departement" value="#{enseignantController.selected.departement}" >
                             <f:selectItems value="#{departementController.itemsAvailableSelectOne}"

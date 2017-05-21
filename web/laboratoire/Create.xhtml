@@ -18,6 +18,8 @@
                                            var="directeurItem"
                                            itemValue="#{directeurItem}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateLaboratoireLabel_description}" for="description" />
+                        <p:inputTextarea id="description" value="#{laboratoireController.selected.description}" title="#{bundle.CreateLaboratoireTitle_description}" />
                         <p:outputLabel value="#{bundle.CreateLaboratoireLabel_nom}" for="nom" />
                         <p:inputText id="nom" value="#{laboratoireController.selected.nom}" title="#{bundle.CreateLaboratoireTitle_nom}" />
                         <p:outputLabel value="#{bundle.CreateLaboratoireLabel_id}" for="id" />

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Contact form</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css"/>
+    </h:head>
+    <ui:composition template="/pv/Pv.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Detail des filieres"/>
+        </ui:define>
+
+        <ui:define name="content">
+            <h:body>
+                <div class="container">
+                    
+                    <div class="col-lg-7">
+                        <div class="form-group">
+                            <label class="control-label">Nom :</label>  
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <p:inputText placeholder="Votre nom" class="form-control"  type="text"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Prénom :</label>  
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <p:inputText placeholder="Votre prénom" class="form-control"  type="text"/>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">E-Mail</label>  
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <p:inputText placeholder="E-Mail Address" class="form-control"  type="text"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Sujet :</label>  
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal"></i></span>
+                                <p:inputText placeholder="Votre sujet ici " class="form-control"  type="text"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Message</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                <h:inputTextarea style="margin-right: 20px;" class="form-control"></h:inputTextarea>
+                            </div>
+                        </div>
+                    
+                    <p:separator/>
+                    <b:button value="Envoyer"/>
+                    <p:separator/>
+                    </div>
+                </div>
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,7 +1,7 @@
 package controller;
 
 import bean.Filiere;
-import bean.Module;
+import bean.Semestre;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
 import service.FiliereFacade;
@@ -28,15 +28,76 @@ public class FiliereController implements Serializable {
     private service.FiliereFacade ejbFacade;
     @EJB
     private service.ModuleFacade moduleFacade;
+    @EJB
+    private service.SemestreFacade semestreFacade;
     private List<Filiere> items = null;
     private Filiere selected;
+    private Filiere filiere;
+    private List<Filiere> filieres;
+    private List<Semestre> semestres;
+    private Semestre semestre;
+    private int typeFilier;
 
-    public List<Filiere> findFiliere(int x) {
-        return ejbFacade.findByType(x);
+    public List<Filiere> findFiliere() {
+        return ejbFacade.findByType(typeFilier);
     }
-    
-    public List<Module> findModByFilier(Filiere f,int numSemestre){
-        return moduleFacade.findByFiliere(f,numSemestre);
+
+    public String typToLetter() {
+        String type;
+        if (typeFilier == 1) {
+            type = "Tron commun";
+            return type;
+        }
+        if (typeFilier == 2) {
+            type = "Licence science et technique";
+            return type;
+        }
+        if (typeFilier == 3) {
+            type = "Cycle d'ingenieurs";
+            return type;
+        }
+        if (typeFilier == 4) {
+            type = "Master science et technique";
+            return type;
+        }
+        return "==";
+    }
+
+
+    public String toTC() {
+        typeFilier = 1;
+        return redirect(1);
+    }
+
+    public String redirect(int x) {
+        filieres = ejbFacade.findByType(x);
+        System.out.println("ejbfind");
+        return "/filiere/FormationInitial?faces-redirect=true";
+    }
+
+    public String toLicence() {
+        typeFilier = 2;
+        return redirect(2);
+    }
+
+    public String toCycle() {
+        typeFilier = 3;
+        return redirect(3);
+    }
+
+    public String toMaster() {
+        typeFilier = 4;
+        return redirect(4);
+    }
+
+    public String toDetailFilier(Filiere f) {
+        filiere = f;
+        semestres = semestreFacade.findByFiliere(f);
+        return "/filiere/DetailFiliere?faces-redirect=true";
+    }
+
+    public List<Semestre> findSemstreByFilier() {
+        return semestreFacade.findByFiliere(filiere);
     }
 
     public FiliereController() {
@@ -171,6 +232,52 @@ public class FiliereController implements Serializable {
             }
         }
 
+    }
+
+    public int getTypeFilier() {
+        return typeFilier;
+}
+
+    public void setTypeFilier(int typeFilier) {
+        this.typeFilier = typeFilier;
+    }
+
+    public List<Filiere> getFilieres() {
+        return filieres;
+    }
+
+    public void setFilieres(List<Filiere> filieres) {
+        this.filieres = filieres;
+    }
+
+    public Semestre getSemestre() {
+        if (semestre == null) {
+            semestre = new Semestre();
+        }
+        return semestre;
+    }
+
+    public void setSemestre(Semestre semestre) {
+        this.semestre = semestre;
+    }
+
+    public Filiere getFiliere() {
+        if (filiere == null) {
+            filiere = new Filiere();
+        }
+        return filiere;
+    }
+
+    public void setFiliere(Filiere filiere) {
+        this.filiere = filiere;
+    }
+
+    public List<Semestre> getSemestres() {
+        return semestres;
+    }
+
+    public void setSemestres(List<Semestre> semestres) {
+        this.semestres = semestres;
     }
 
 }

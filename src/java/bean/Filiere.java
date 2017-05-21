@@ -24,10 +24,11 @@ public class Filiere implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String libelle;
     private String abreviation;
+    private String objectif;
     @OneToMany(mappedBy = "filiere")
     private List<Enseignant> enseignants;
     private int type ;//1:TC ,2:licence ,3:cycle ,4:master
@@ -46,6 +47,15 @@ public class Filiere implements Serializable {
         return abreviation;
     }
 
+    public String getObjectif() {
+        return objectif;
+    }
+
+    public void setObjectif(String objectif) {
+        this.objectif = objectif;
+    }
+
+    
     public void setAbreviation(String abreviation) {
         this.abreviation = abreviation;
     }

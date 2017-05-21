@@ -35,6 +35,12 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLaboratoireTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListLaboratoireTitle_nom}"/>
                             </f:facet>
                             <h:outputText value="#{item.nom}"/>

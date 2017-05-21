@@ -7,7 +7,9 @@ package service;
 
 import bean.Filiere;
 import bean.Module;
-import controler.util.SearchUtil;
+import bean.Semestre;
+import controller.util.SearchUtil;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -32,15 +34,5 @@ public class ModuleFacade extends AbstractFacade<Module> {
         super(Module.class);
     }
 
-    public List<Module> findByFiliere(Filiere f, int numSemestre) {
-        String requette = "select m from Module m where 1=1 ";
-        if (f.getId() != null) {
-           requette+=SearchUtil.addConstraint("m.filiere", "id","=", f.getId());
-        }
-        if (numSemestre > 0) {
-            requette += "AND m.semestre.numero=" + numSemestre;
-        }
-        return em.createQuery(requette).getResultList();
-    }
 
 }

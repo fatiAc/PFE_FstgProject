@@ -12,8 +12,6 @@
             <h:form id="SemestreCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{semestreController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateSemestreLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{semestreController.selected.id}" title="#{bundle.CreateSemestreTitle_id}" />
                         <p:outputLabel value="#{bundle.CreateSemestreLabel_filiere}" for="filiere" />
                         <p:selectOneMenu id="filiere" value="#{semestreController.selected.filiere}" >
                             <f:selectItems value="#{filiereController.itemsAvailableSelectOne}"

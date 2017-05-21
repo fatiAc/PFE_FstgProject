@@ -12,6 +12,10 @@
             <h:form id="FiliereViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{filiereController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFiliereLabel_abreviation}"/>
+                        <h:outputText value="#{filiereController.selected.abreviation}" title="#{bundle.ViewFiliereTitle_abreviation}"/>
+                        <h:outputText value="#{bundle.ViewFiliereLabel_objectif}"/>
+                        <h:outputText value="#{filiereController.selected.objectif}" title="#{bundle.ViewFiliereTitle_objectif}"/>
                         <h:outputText value="#{bundle.ViewFiliereLabel_type}"/>
                         <h:outputText value="#{filiereController.selected.type}" title="#{bundle.ViewFiliereTitle_type}"/>
                         <h:outputText value="#{bundle.ViewFiliereLabel_responsableFiliere}"/>
