@@ -18,8 +18,6 @@
                         <p:inputText id="abreviation" value="#{filiereController.selected.abreviation}" title="#{bundle.CreateFiliereTitle_abreviation}" />
                         <p:outputLabel value="#{bundle.CreateFiliereLabel_objectif}" for="objectif" />
                         <p:inputTextarea id="objectif" value="#{filiereController.selected.objectif}" title="#{bundle.CreateFiliereTitle_objectif}"/>
-                        <p:outputLabel value="#{bundle.CreateFiliereLabel_type}" for="type" />
-                        <p:inputText id="type" value="#{filiereController.selected.type}" title="#{bundle.CreateFiliereTitle_type}" />
                         <p:outputLabel value="#{bundle.CreateFiliereLabel_responsableFiliere}" for="responsableFiliere" />
                         <p:selectOneMenu id="responsableFiliere" value="#{filiereController.selected.responsableFiliere}" >
                             <f:selectItems value="#{enseignantController.itemsAvailableSelectOne}"
@@ -40,8 +38,6 @@
                                            var="departementItem"
                                            itemValue="#{departementItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateFiliereLabel_libelle}" for="libelle" />
-                        <p:inputText id="libelle" value="#{filiereController.selected.libelle}" title="#{bundle.CreateFiliereTitle_libelle}" />
                         <p:outputLabel value="#{bundle.CreateFiliereLabel_id}" for="id" />
                         <p:inputText id="id" value="#{filiereController.selected.id}" title="#{bundle.CreateFiliereTitle_id}" />
                     </p:panelGrid>

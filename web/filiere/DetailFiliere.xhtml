@@ -66,27 +66,25 @@
                         </div>
                         <div class="card-block">
 
+
                             <p:dataList value="#{filiereController.semestres}" var="semestre" type="definition" >
                                 <p:panel style="margin-right: 50px;">
                                     <h:form >
-                                        <p:dataTable id="datalist" value="#{semestre.modules}" var="module"
-                                                     selectionMode="single"
-                                                     paginator="false"
-                                                     rowKey="#{module.id}"
+                                        <b:dataTable id="dataTable" value="#{semestre.modules}" var="module" 
+                                                     onpage="false" searching="false" paginated="false" selectionMode="single"  
                                                      >
-                                            <p:column>
+                                            <b:dataTableColumn>
                                                 <f:facet name="header">
-                                                    <h:outputText value="#{semestre.toString()}" style="background-color: #00796b"/>
+                                                    <h:outputText value="#{semestre.toString()}"/>
                                                 </f:facet>
                                                 <h:outputText value="#{module.nom}"/>
-                                            </p:column>
-                                        </p:dataTable>
+                                            </b:dataTableColumn>
+                                        </b:dataTable>
                                     </h:form>
                                 </p:panel><p:separator></p:separator>
                             </p:dataList>
                         </div>
                     </div></div></div>
-
         </ui:define>
     </ui:composition>
 </html>
