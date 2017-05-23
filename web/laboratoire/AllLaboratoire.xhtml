@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
+    </h:head>
+    <ui:composition template="/template/simpleTemplate.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Tous les laboratoires"/>
+        </ui:define>
+
+        <ui:define name="content">
+
+            <div class="wrapper row3">
+                <div class="rounded">
+                    <div class="sidebar one_quarter first"> <br></br><br></br>
+                        <h6>RECHERCHES SCIENTIFIQUES </h6><br></br>
+                        <nav class="sdb_holder">
+
+                            <li><p:commandLink value="Bourse d'Excellence" action="#{filiereController.toLicence()}"></p:commandLink></li>
+                            <li><p:commandLink value="CED-SI" action="#{filiereController.toCycle()}"></p:commandLink></li>
+                            <li><p:commandLink value="UFR" action="#{filiereController.toMaster()}"></p:commandLink></li>
+                        </nav></div></div></div>
+
+            <div class="container">     
+                <div class="col-lg-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-body"><h:outputText value="Tous les laboratoires de la FSTG >>" style="text-transform: uppercase; color: #0059bc"/></div>
+                    </div>
+                    <p:dataList value="#{laboratoireController.items}" var="labo" type="definition">
+                        <h:form>
+
+                            <b:commandButton class="list-group-item" icon="glyphicon glyphicon-chevron-right" value="#{labo.nom}" action="#{laboratoireController.stockValue(labo)}"/>
+                        </h:form>
+                    </p:dataList>
+                </div>
+                <div class="col-lg-3">
+                    <h:form><br></br><br></br><br></br><p:separator></p:separator>
+                        <p:panel>
+                            <h2 style="font-weight: bold">LABORATOIRE : #{laboratoireController.laboratoire.nom}</h2>
+                            <h:outputText value="Directeur : " style="text-decoration: underline"/>
+                            <h:outputText value="#{laboratoireController.laboratoire.directeur.toString()}"/><br></br>
+                            <h:outputText value="Tel : " style="text-decoration: underline"/>
+                            <h:outputText value="#{laboratoireController.laboratoire.directeur.tel}"/><br></br>
+                            <h:outputText value="Adresse mail : " style="text-decoration: underline"/>
+                            <h:outputText value="#{laboratoireController.laboratoire.directeur.email}"/><p:separator></p:separator>
+                            <b:commandButton class="btn-primary" value="Plus d'info ici >> " disabled="#{laboratoireController.disabled}" action="/laboratoire/DetailLabo?faces-redirect=true"/>
+                        </p:panel><br></br>
+                    </h:form>
+                </div>
+            </div>
+           
+
+        </ui:define>
+    </ui:composition>
+</html>
+

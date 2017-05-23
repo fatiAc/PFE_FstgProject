@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:composition template="/template/sideBarTemplate.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLaboratoireTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="content">
+   
+<h:form id="form">
+    <p:dataGrid var="departement" value="#{departementController.items}" columns="3" layout="grid"
+        rows="12" paginator="true" id="departements"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
+ 
+        <f:facet name="header">
+          Tout Les Departement
+        </f:facet>
+
+        <p:panel header="#{departement.intitule}" style="text-align:center;background-color: #0089ec;height: 170px ">
+            <!--<h:panelGrid columns="1" style="width:100%">-->
+                <p:graphicImage name="../resources/images/logo1.png"/> 
+ 
+                <h:outputText value="#{departement.id}" />
+ 
+                <p:commandLink update=":form:departementDetail" oncomplete="PF('departementDialog').show()" title="View Detail">
+                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                    <f:setPropertyActionListener value="#{departement}" target="#{departementController.selected}" />
+                </p:commandLink>
+            <!--</h:panelGrid>-->
+        </p:panel>
+ 
+    </p:dataGrid>
+ 
+    <p:dialog header="Departement info" widgetVar="departementDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="departementDetail" style="text-align:center;height: 500px;width: 700px">
+            <p:panelGrid  columns="2"  rendered="#{not empty departementController.selected}" columnClasses="label,value">
+                <f:facet name="header">
+                    <h1 style="background-color: #8bc34a"> Bienvenue Dans Le Departement : #{departementController.selected.intitule}</h1>
+                </f:facet>
+ 
+                <h:outputText value="Id:"  style=" color: black ;background-color: #8bc34a"/>
+                <h:outputText value="#{departementController.selected.id}" />
+ 
+                <h:outputText value="Nom De Departement"  style=" color: black ;background-color: #8bc34a"/>
+                <h:outputText value="#{departementController.selected.intitule}"  />
+ 
+                <h:outputText value="Chef De departement" style=" color: black ;background-color: #8bc34a"  />
+                <h:outputText value="#{departementController.selected.chefDepartement.nom} &nbsp;#{departementController.selected.chefDepartement.prenom} " />
+           
+                <h:outputText value="List Des Ensignants:" style=" color: black ;background-color: #8bc34a"/>
+                <b:dataTable value="#{departementController.selected.enseignants}" var="item" disabled="true" paginated="false">
+               
+                <b:dataTableColumn>
+                    <f:facet name="header">
+                        <h:outputText value="Nom"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nom}"/>
+                </b:dataTableColumn>
+                <b:dataTableColumn>
+                    <f:facet name="header">
+                        <h:outputText value="Prenom"/>
+                    </f:facet>
+                    <h:outputText value="#{item.prenom}"/>
+                </b:dataTableColumn>
+                <b:dataTableColumn>
+                    <f:facet name="header">
+                        <h:outputText value="Email"/>
+                    </f:facet>
+                    <h:outputText value="#{item.email}"/>
+                </b:dataTableColumn>
+                <b:dataTableColumn>
+                    <f:facet name="header">
+                        <h:outputText value="Cin"/>
+                    </f:facet>
+                    <h:outputText value="#{item.cin}"/>
+                </b:dataTableColumn>
+            </b:dataTable>
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+   
+
+
+        
+       
+
+</h:form>
+        </ui:define>
+    </ui:composition>    
+
+</html>
