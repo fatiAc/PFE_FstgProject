@@ -29,17 +29,15 @@
 
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDepartementTitle_chefDepartement}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.chefDepartement}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListDepartementTitle_intitule}"/>
                             </f:facet>
                             <h:outputText value="#{item.intitule}"/>
-                        </p:column>
-                        
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListDepartementTitle_chefDepartement}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.chefDepartement.nom}"/>&nbsp;
-                            <h:outputText value="#{item.chefDepartement.prenom}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

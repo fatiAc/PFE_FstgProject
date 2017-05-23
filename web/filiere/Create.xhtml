@@ -13,10 +13,14 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{filiereController.selected != null}">
                         <p:outputLabel value="Nom" for="libelle" />
+                        <p:inputText id="libelle" value="#{filiereController.selected.libelle}" title="#{bundle.CreateFiliereTitle_libelle}" />
+                        <p:outputLabel value="#{bundle.CreateFiliereLabel_abreviation}" for="abreviation" />
                         <p:inputText id="abreviation" value="#{filiereController.selected.abreviation}" title="#{bundle.CreateFiliereTitle_abreviation}" />
                         <p:outputLabel value="#{bundle.CreateFiliereLabel_objectif}" for="objectif" />
                         <p:inputTextarea id="objectif" value="#{filiereController.selected.objectif}" title="#{bundle.CreateFiliereTitle_objectif}"/>
                         <p:outputLabel value="#{bundle.CreateFiliereLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{filiereController.selected.type}" title="#{bundle.CreateFiliereTitle_type}" />
+                        <p:outputLabel value="#{bundle.CreateFiliereLabel_responsableFiliere}" for="responsableFiliere" />
                         <p:selectOneMenu id="responsableFiliere" value="#{filiereController.selected.responsableFiliere}" >
                             <f:selectItems value="#{enseignantController.itemsAvailableSelectOne}"
                                            var="responsableFiliereItem"

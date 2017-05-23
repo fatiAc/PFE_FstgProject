@@ -12,18 +12,20 @@
             <h:form id="EnseignantViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{enseignantController.selected != null}">
-                        <h:outputText value="#{bundle.ViewEnseignantLabel_cin}"/>
-                        <h:outputText value="#{enseignantController.selected.cin}" title="#{bundle.ViewEnseignantTitle_cin}"/>
+                        <h:outputText value="#{bundle.ViewEnseignantLabel_filiere}"/>
+                        <h:outputText value="#{enseignantController.selected.filiere}" title="#{bundle.ViewEnseignantTitle_filiere}"/>
+                        <h:outputText value="#{bundle.ViewEnseignantLabel_tel}"/>
+                        <h:outputText value="#{enseignantController.selected.tel}" title="#{bundle.ViewEnseignantTitle_tel}"/>
+                        <h:outputText value="#{bundle.ViewEnseignantLabel_departement}"/>
+                        <h:outputText value="#{enseignantController.selected.departement}" title="#{bundle.ViewEnseignantTitle_departement}"/>
                         <h:outputText value="#{bundle.ViewEnseignantLabel_nom}"/>
                         <h:outputText value="#{enseignantController.selected.nom}" title="#{bundle.ViewEnseignantTitle_nom}"/>
                         <h:outputText value="#{bundle.ViewEnseignantLabel_prenom}"/>
                         <h:outputText value="#{enseignantController.selected.prenom}" title="#{bundle.ViewEnseignantTitle_prenom}"/>
                         <h:outputText value="#{bundle.ViewEnseignantLabel_email}"/>
                         <h:outputText value="#{enseignantController.selected.email}" title="#{bundle.ViewEnseignantTitle_email}"/>
-
-                        <h:outputText value="#{bundle.ViewEnseignantLabel_departement}"/>
-                        <h:outputText value="#{enseignantController.selected.departement}" title="#{bundle.ViewEnseignantTitle_departement}"/>
-
+                        <h:outputText value="#{bundle.ViewEnseignantLabel_cin}"/>
+                        <h:outputText value="#{enseignantController.selected.cin}" title="#{bundle.ViewEnseignantTitle_cin}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="EnseignantViewDialog.hide()"/>
                 </h:panelGroup>

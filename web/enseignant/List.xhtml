@@ -27,34 +27,48 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                          <p:column>
+                        <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEnseignantTitle_cin}"/>
+                                <h:outputText value="#{bundle.ListEnseignantTitle_filiere}"/>
                             </f:facet>
-                            <h:outputText value="#{item.cin}"/>
+                            <h:outputText value="#{item.filiere}"/>
                         </p:column>
-                        
-                          <p:column>
+                        <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Nom|Prenom"/>
+                                <h:outputText value="#{bundle.ListEnseignantTitle_tel}"/>
                             </f:facet>
-                              <h:outputText value="#{item.prenom}"/>&nbsp;
-                              <h:outputText value="#{item.nom}"/>
-                        </p:column>
-                          <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Email"/>
-                            </f:facet>
-                              <h:outputText value="#{item.email}"/>
-                             
+                            <h:outputText value="#{item.tel}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListEnseignantTitle_departement}"/>
                             </f:facet>
-                            <h:outputText value="#{item.departement.intitule}"/>
+                            <h:outputText value="#{item.departement}"/>
                         </p:column>
-                     
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnseignantTitle_nom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnseignantTitle_prenom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnseignantTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEnseignantTitle_cin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cin}"/>
+                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{enseignantController.prepareCreate}" update=":EnseignantCreateForm" oncomplete="PF('EnseignantCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EnseignantViewForm" oncomplete="PF('EnseignantViewDialog').show()" disabled="#{empty enseignantController.selected}"/>

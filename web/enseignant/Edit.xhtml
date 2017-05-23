@@ -12,15 +12,15 @@
             <h:form id="EnseignantEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{enseignantController.selected != null}">
-                         <p:outputLabel value="#{bundle.EditEnseignantLabel_cin}" for="cin" />
-                        <p:inputText id="cin" value="#{enseignantController.selected.cin}" title="#{bundle.EditEnseignantTitle_cin}" />
-                          <p:outputLabel value="#{bundle.EditEnseignantLabel_nom}" for="nom" />
-                        <p:inputText id="nom" value="#{enseignantController.selected.nom}" title="#{bundle.EditEnseignantTitle_nom}" />
-                        <p:outputLabel value="#{bundle.EditEnseignantLabel_prenom}" for="prenom" />
-                        <p:inputText id="prenom" value="#{enseignantController.selected.prenom}" title="#{bundle.EditEnseignantTitle_prenom}" />
-                        <p:outputLabel value="#{bundle.EditEnseignantLabel_email}" for="email" />
-                        <p:inputText id="email" value="#{enseignantController.selected.email}" title="#{bundle.EditEnseignantTitle_email}" />
-                           
+                        <p:outputLabel value="#{bundle.EditEnseignantLabel_filiere}" for="filiere" />
+                        <p:selectOneMenu id="filiere" value="#{enseignantController.selected.filiere}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{filiereController.itemsAvailableSelectOne}"
+                                           var="filiereItem"
+                                           itemValue="#{filiereItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEnseignantLabel_tel}" for="tel" />
+                        <p:inputText id="tel" value="#{enseignantController.selected.tel}" title="#{bundle.EditEnseignantTitle_tel}" />
                         <p:outputLabel value="#{bundle.EditEnseignantLabel_departement}" for="departement" />
                         <p:selectOneMenu id="departement" value="#{enseignantController.selected.departement}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -28,8 +28,14 @@
                                            var="departementItem"
                                            itemValue="#{departementItem}"/>
                         </p:selectOneMenu>
-                      
-                       
+                        <p:outputLabel value="#{bundle.EditEnseignantLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{enseignantController.selected.nom}" title="#{bundle.EditEnseignantTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditEnseignantLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{enseignantController.selected.prenom}" title="#{bundle.EditEnseignantTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.EditEnseignantLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{enseignantController.selected.email}" title="#{bundle.EditEnseignantTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditEnseignantLabel_cin}" for="cin" />
+                        <p:inputText id="cin" value="#{enseignantController.selected.cin}" title="#{bundle.EditEnseignantTitle_cin}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{enseignantController.update}" value="#{bundle.Save}" update="display,:EnseignantListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EnseignantEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="EnseignantEditDialog.hide()"/>
