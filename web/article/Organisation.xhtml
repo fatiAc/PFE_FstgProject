@@ -10,7 +10,7 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:form >
-     <ui:composition template="/template/simpleTemplate.xhtml">
+   <ui:composition template="/template/articleSimpleTemplate.xhtml">
        <ui:define name="content" >
            <img src="#{articleController.findArticleByTitle('Organisation').images.get(0)}"/>
         <h:outputText value="#{articleController.contentToRender.content}" />

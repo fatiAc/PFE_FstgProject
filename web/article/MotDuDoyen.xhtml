@@ -10,7 +10,7 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:form  >
-     <ui:composition template="/template/simpleTemplate.xhtml">
+    <ui:composition template="/template/articleSimpleTemplate.xhtml">
        <ui:define name="content" >
            <div >
            <h1 style="font-size: 300% ; color: #039be5">#{articleController.findArticleByTitle('Mot de Mr le doyen :').title}</h1></div>
