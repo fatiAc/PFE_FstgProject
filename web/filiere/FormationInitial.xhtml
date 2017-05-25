@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Formation</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
+    </h:head>
+    <ui:composition template="/template/simpleTemplate.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Tous les filières"/>
+        </ui:define>
+
+        <ui:define name="content">
+
+            <div class="wrapper row3">
+                <div class="rounded">
+                    <div class="sidebar one_quarter first"> <br></br><br></br>
+                        <!-- ################################################################################################ -->
+                        <h6>FORMATION INITIAL</h6><br></br>
+                        <nav class="sdb_holder">
+
+                            <li><p:commandLink value="Tronc Commun" action="#{filiereController.toTC()}"></p:commandLink></li>
+                            <li><p:commandLink value="Licences" action="#{filiereController.toLicence()}"></p:commandLink></li>
+                            <li><p:commandLink value="Filière d'Ingénieurs" action="#{filiereController.toCycle()}"></p:commandLink></li>
+                            <li><p:commandLink value="Masters" action="#{filiereController.toMaster()}"></p:commandLink></li>
+
+                        </nav></div></div></div>
+
+
+            <div class="container">
+                <div class="col-lg-7">
+                    <div class="panel panel-primary">
+                        <div class="panel-body"><h:outputText value="Formation initial / #{filiereController.typToLetter()}" style="text-transform: uppercase;"/></div>
+                    </div>                     
+                    <p:dataList value="#{filiereController.filieres}" var="filiere" type="definition"><br></br>
+                        <p:panel class="panel-primary" style="margin-right: 30px; margin-left: 30px;">
+                            <div class="panel-heading" style="text-align: center">#{filiere.libelle}</div>
+                            <h:form style="background: linear-gradient(buttonface, background);">
+                                <div class="panel-primary">
+                                    <div class="panel-body">
+                                        <h:outputText value="Abreviation : "/>
+                                        <h:outputText value="#{filiere.abreviation}"/><br></br><br></br>
+                                        <div class="active">     
+                                            <p:commandLink action="#{filiereController.toDetailFilier(filiere)}" value="#{filiere.libelle}" style="text-decoration: underline;text-transform: uppercase;"/>(detail)</div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <h:outputText value="Responsable: "/>
+                                        <h:outputText value="#{filiere.responsableFiliere.toString()}"/><p:separator></p:separator>
+                                        <h:outputText value="Email: "/>
+                                        <h:outputText value="#{filiere.responsableFiliere.email}"/>
+
+                                    </div>
+                                </div>
+                            </h:form>
+                        </p:panel><p:separator></p:separator>
+                    </p:dataList>
+                </div>
+
+            </div>
+
+            <br></br>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </ui:define>
+    </ui:composition>        
+
+</html>
+

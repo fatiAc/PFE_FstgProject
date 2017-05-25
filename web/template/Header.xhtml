@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+        
+        <div class="wrapper row0">
+            <div id="topbar" class="clear"> 
+                <!-- ################################################################################################ -->
+                <nav>
+                    <ul>
+                        <li><a href="index.xhtml">Acceuil</a></li>
+                        <li><a href="#">Contactez Nous</a></li>
+                        <li><a href="#">Plan D'accés</a></li>
+                        <li><a href="../connexion/LoginEtudiant.xhtml">Login Etudiant</a></li>
+                        <li><a href="../connexion/LoginStaff.xhtml">Login Staff</a></li>
+                    </ul>
+                </nav>
+                <!-- ################################################################################################ --> 
+            </div>
+        </div>
+        <!-- ################################################################################################ --> 
+        <!-- ################################################################################################ --> 
+        <!-- ################################################################################################ -->
+        <div class="wrapper row1">
+            <header id="header" class="clear"> 
+                <!-- ################################################################################################ -->
+                <center>
+                <div id="logo" class="">
+                    <a href="index.xhtml">
+                    <img  src="../resources/images/logo1.png" alt=""/>
+                    </a>
+                </div>
+                </center>
+                
+                <!-- ################################################################################################ --> 
+            </header>
+        </div>
+        <!-- ################################################################################################ --> 
+        <!-- ################################################################################################ --> 
+        <!-- ################################################################################################ -->
+        <div class="wrapper row2">
+            <div class="rounded">
+                <h:form>
+                <nav id="mainav" class="clear"> 
+                    <!-- ################################################################################################ -->
+                    <ul class="clear">
+                        <li class="active"><p:commandLink value='Acceuil'  action="/template/index.xhtml"  update=":middleColumn"> </p:commandLink></li>
+                    <li><a class="drop" href="#">Faculté</a>
+                        <ul>
+                            <li><p:commandLink value='Mot Du Doyen'  action="/article/MotDuDoyen.xhtml" update=":middleColumn" ></p:commandLink></li>
+                                <li><p:commandLink value="Architecture Pedagogique"  action='/article/architecturePedagogique.xhtml' update=":middleColumn" ></p:commandLink></li>
+                                <li> <p:commandLink value="FSTG En bref"  action='/article/FSTGEnBref.xhtml' ></p:commandLink></li>
+                                <li> <p:commandLink value="FSTG En chiffre"  action='/article/FSTGEnChiffr.xhtml' ></p:commandLink></li>
+                                
+                                
+
+                            </ul>
+                        </li>
+                        <li><a class="drop" href="#">Formation</a><!-- 9adato fatima -->
+                            <ul>
+                                
+
+
+                                
+
+                            </ul>
+                        </li>
+                        <li><a class="drop" href="#">Espace Etudiant</a>
+                            <ul>
+                                <li><p:commandLink value="Reglement Interieur"  action='/article/reglementInterieur.xhtml'   update=":middleColumn" ></p:commandLink></li>
+                        <li><p:commandLink value="Planning Annuel"  action="/article/planningAnnuel.xhtml" update=":middleColumn" ></p:commandLink></li>
+
+
+                            </ul>
+                        </li>
+
+                        <li><a class="drop" href="#">Recherche Scientifique</a>
+                            <ul>
+                                <li><p:commandLink value="Labo"  update=":middleColumn" ></p:commandLink></li> <!-- 9adato fatima -->
+                                <li><p:commandLink value="Equipes"  action='/article/Equipes.xhtml' update=":middleColumn" ></p:commandLink></li>
+                                <li><p:commandLink value="CED-SI"  action='/article/CED-SI.xhtml' update=":middleColumn" ></p:commandLink></li>
+                                <li><p:commandLink value="UFR"  action='/article/UFR.xhtml' update=":middleColumn" ></p:commandLink></li>
+                                    <li><p:commandLink value="Bourse d'Excellence"  action='/article/Bourse excellence.xhtml' update=":middleColumn" ></p:commandLink></li>            
+                            </ul>
+                        </li>
+                        <li><a class="drop" href="#">Activités</a>
+                            <ul>
+                                <li><p:commandLink value="">Manifestations</p:commandLink></li>
+                                <li><p:commandLink value="">Culturelles</p:commandLink></li>
+                                <li><p:commandLink value="">Clubs et Associations</p:commandLink></li>
+                                <li><p:commandLink value="">Sportives</p:commandLink></li>
+
+
+                            </ul>
+                        </li>
+                        <li><a class="drop" href="#">En Ligne</a>
+                            <ul>
+                                <li><a href="http://www.fstg-marrakech.ac.ma/moodle">Platform Moodle</a></li>
+                                <li><p:commandLink value=""  >Bibliothèque</p:commandLink></li>
+                                <li><p:commandLink value=""   >Messagerie</p:commandLink></li>
+                                <li><p:commandLink value=""  >Cours et Support</p:commandLink></li>
+
+
+                            </ul>
+                        </li>
+
+
+
+                    </ul>
+                    <!-- ################################################################################################ --> 
+                </nav>
+                </h:form>
+            </div>
+        </div>
+        
+        
+    </ui:composition>
+</html>
+
