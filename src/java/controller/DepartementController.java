@@ -32,6 +32,9 @@ public class DepartementController implements Serializable {
     }
 
     public Departement getSelected() {
+        if(selected==null){
+            selected=new Departement();
+        }
         return selected;
     }
 

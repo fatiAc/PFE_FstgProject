@@ -30,13 +30,18 @@
                             <li><p:commandLink value="Filière d'Ingénieurs" action="#{filiereController.toCycle()}"></p:commandLink></li>
                             <li><p:commandLink value="Masters" action="#{filiereController.toMaster()}"></p:commandLink></li>
 
-                        </nav></div></div></div>
+                        </nav><br></br>
+                        <h6>FORMATION CONTINUE</h6><br></br>
+                        <nav class="sdb_holder">
+                            <li><p:commandLink value="Licence professionelle" action="#{filiereController.toLicenceContinu()}"></p:commandLink></li>
+                        </nav>
+                    </div></div></div>
 
 
             <div class="container">
                 <div class="col-lg-7">
                     <div class="panel panel-primary">
-                        <div class="panel-body"><h:outputText value="Formation initial / #{filiereController.typToLetter()}" style="text-transform: uppercase;"/></div>
+                        <div class="panel-body"><h:outputText value="#{filiereController.typFormatToLettre()} / #{filiereController.typFilierToLetter()}" style="text-transform: uppercase;"/></div>
                     </div>                     
                     <p:dataList value="#{filiereController.filieres}" var="filiere" type="definition"><br></br>
                         <p:panel class="panel-primary" style="margin-right: 30px; margin-left: 30px;">

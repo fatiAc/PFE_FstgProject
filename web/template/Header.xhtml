@@ -12,7 +12,7 @@
                 <nav>
                     <ul>
                         <li><a href="../template/index.xhtml">Acceuil</a></li>
-                        <li><a href="../contact/contactUniversity.xhtml">Contactez Nous</a></li>
+                        <li><p:commandLink value="Contactez Nous" action="#{messageController.prepareCreate()}"></p:commandLink></li>
                         <li><a href="../connexion/LoginEtudiant.xhtml">Login Etudiant</a></li>
                         <li><a href="../connexion/LoginStaff.xhtml">Login Staff</a></li>
                     </ul>
@@ -82,7 +82,7 @@
                                     </li>
                                     <li><a class="drop" href="#">Formation Continue</a>
                                         <ul>
-                                            <li><a href="#">Licence Professionelle</a></li>
+                                            <li><p:commandLink value="Licence Professionelle" action="#{filiereController.toLicenceContinu()}"></p:commandLink></li>
                                         </ul>
                                     </li>
                                 </ul>

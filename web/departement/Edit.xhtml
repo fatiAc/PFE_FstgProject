@@ -21,8 +21,6 @@
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditDepartementLabel_intitule}" for="intitule" />
                         <p:inputText id="intitule" value="#{departementController.selected.intitule}" title="#{bundle.EditDepartementTitle_intitule}" />
-                        <p:outputLabel value="#{bundle.EditDepartementLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{departementController.selected.id}" title="#{bundle.EditDepartementTitle_id}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{departementController.update}" value="#{bundle.Save}" update="display,:DepartementListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DepartementEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="DepartementEditDialog.hide()"/>

@@ -17,7 +17,9 @@
                         <p:outputLabel value="#{bundle.EditFiliereLabel_objectif}" for="objectif" />
                         <p:inputText id="objectif" value="#{filiereController.selected.objectif}" title="#{bundle.EditFiliereTitle_objectif}" />
                         <p:outputLabel value="#{bundle.EditFiliereLabel_type}" for="type" />
-                        <p:inputText id="type" value="#{filiereController.selected.type}" title="#{bundle.EditFiliereTitle_type}" />
+                        <p:inputText id="type" value="#{filiereController.selected.typeFiliere}" title="#{bundle.EditFiliereTitle_type}" />
+                        <p:outputLabel value="type formation" for="typeFormation" />
+                        <p:inputText id="typeFormation" value="#{filiereController.selected.typeFormation}" title="#{bundle.EditFiliereTitle_type}" />
                         <p:outputLabel value="#{bundle.EditFiliereLabel_responsableFiliere}" for="responsableFiliere" />
                         <p:selectOneMenu id="responsableFiliere" value="#{filiereController.selected.responsableFiliere}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>

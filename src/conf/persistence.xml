@@ -14,6 +14,7 @@
     <class>bean.EquipeRecherche</class>
     <class>bean.Etudiant</class>
     <class>bean.ThemeRecherche</class>
+    <class>bean.Message</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

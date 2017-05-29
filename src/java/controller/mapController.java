@@ -31,7 +31,6 @@ public class mapController implements Serializable {
 
     public MapModel addModel() {
         getEmptyModel().addOverlay(new Marker(new LatLng(31.6445494, -8.020280299999968)));
-        System.out.println("========" +emptyModel);
         return emptyModel;
     }
 

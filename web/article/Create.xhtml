@@ -12,6 +12,27 @@
             <h:form id="ArticleCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{articleController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateArticleLabel_file}" for="file" />
+                        <p:fileUpload   id="file" value="#{articleController.selected.file}" mode="simple" skinSimple="true" title="#{bundle.CreateArticleTitle_file}" />
+                        <p:outputLabel value="#{bundle.CreateArticleLabel_priority}" for="priority" />
+                        
+                        <p:selectOneMenu id="priority" value="#{articleAdminController.article.priority}" title="#{bundle.CreateArticleTitle_priority}" >
+                            <f:selectItem itemValue="#{null}" itemLabel="Select your Priority"/>
+                            <f:selectItem itemValue="0" itemLabel="Max"/>
+                            <f:selectItem itemValue="1" itemLabel="Trés Fort"/>
+                            <f:selectItem itemValue="2" itemLabel="Fort"/>
+                            <f:selectItem itemValue="3" itemLabel="Normal"/>
+                            <f:selectItem itemValue="4" itemLabel="Faible"/>
+                            <f:selectItem itemValue="5" itemLabel="Trés Faible"/>
+                            <f:selectItem itemValue="6" itemLabel="Min"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateArticleLabel_type}"  />
+                        <p:selectOneMenu id="type" value="#{articleAdminController.article.type}" title="#{bundle.CreateArticleTitle_type}" >
+                            <f:selectItem itemValue="#{null}" itemLabel="Select your Type"/>
+                            <f:selectItem itemValue="Gauche" itemLabel="Gauche"/>
+                            <f:selectItem itemValue="Milieu" itemLabel="Milieu "/>
+                            <f:selectItem itemValue="Droit" itemLabel="Droit"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateArticleLabel_auteur}" for="auteur" />
                         <p:selectOneMenu id="auteur" value="#{articleController.selected.auteur}" >
                             <f:selectItems value="#{enseignantController.itemsAvailableSelectOne}"
