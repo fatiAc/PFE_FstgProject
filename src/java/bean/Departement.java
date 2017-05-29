@@ -38,6 +38,9 @@ public class Departement implements Serializable {
     }
 
     public Enseignant getChefDepartement() {
+        if(chefDepartement==null){
+            chefDepartement=new  Enseignant();
+        }
         return chefDepartement;
     }
 
@@ -50,6 +53,7 @@ public class Departement implements Serializable {
     }
 
     public List<Enseignant> getEnseignants() {
+       
         return enseignants;
     }
 

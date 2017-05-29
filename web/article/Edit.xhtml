@@ -12,6 +12,12 @@
             <h:form id="ArticleEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{articleController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditArticleLabel_file}" for="file" />
+                        <p:inputText id="file" value="#{articleController.selected.file}" title="#{bundle.EditArticleTitle_file}" />
+                        <p:outputLabel value="#{bundle.EditArticleLabel_priority}" for="priority" />
+                        <p:inputText id="priority" value="#{articleController.selected.priority}" title="#{bundle.EditArticleTitle_priority}" />
+                        <p:outputLabel value="#{bundle.EditArticleLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{articleController.selected.type}" title="#{bundle.EditArticleTitle_type}" />
                         <p:outputLabel value="#{bundle.EditArticleLabel_auteur}" for="auteur" />
                         <p:selectOneMenu id="auteur" value="#{articleController.selected.auteur}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>

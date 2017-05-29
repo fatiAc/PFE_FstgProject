@@ -12,6 +12,12 @@
             <h:form id="ArticleViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{articleController.selected != null}">
+                        <h:outputText value="#{bundle.ViewArticleLabel_file}"/>
+                        <h:outputText value="#{articleController.selected.file}" title="#{bundle.ViewArticleTitle_file}"/>
+                        <h:outputText value="#{bundle.ViewArticleLabel_priority}"/>
+                        <h:outputText value="#{articleController.selected.priority}" title="#{bundle.ViewArticleTitle_priority}"/>
+                        <h:outputText value="#{bundle.ViewArticleLabel_type}"/>
+                        <h:outputText value="#{articleController.selected.type}" title="#{bundle.ViewArticleTitle_type}"/>
                         <h:outputText value="#{bundle.ViewArticleLabel_auteur}"/>
                         <h:outputText value="#{articleController.selected.auteur}" title="#{bundle.ViewArticleTitle_auteur}"/>
                         <h:outputText value="#{bundle.ViewArticleLabel_dateCreation}"/>
