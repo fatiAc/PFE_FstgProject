@@ -37,7 +37,7 @@ public class SemestreFacade extends AbstractFacade<Semestre> {
         if (f != null && f.getId() != null) {
             System.out.println("============SemestreFacade==findByFiliere hahya dik lfilr " + f);
             requette += SearchUtil.addConstraint("s.filiere", "id", "=", f.getId());
-            requette += " ORDER BY s.numero";
+            requette += " ORDER BY s.libelle";
             System.out.println(requette);
             return em.createQuery(requette).getResultList();
         } else {

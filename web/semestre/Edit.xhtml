@@ -22,7 +22,7 @@
                                            itemValue="#{filiereItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditSemestreLabel_numero}" for="numero" />
-                        <p:inputText id="numero" value="#{semestreController.selected.numero}" title="#{bundle.EditSemestreTitle_numero}" />
+                        <p:inputText id="numero" value="#{semestreController.selected.libelle}" title="#{bundle.EditSemestreTitle_numero}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{semestreController.update}" value="#{bundle.Save}" update="display,:SemestreListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SemestreEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="SemestreEditDialog.hide()"/>
