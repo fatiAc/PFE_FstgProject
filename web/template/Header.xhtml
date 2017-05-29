@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <ui:composition>
-
+        
         <div class="wrapper row0">
             <div id="topbar" class="clear"> 
                 <!-- ################################################################################################ -->
@@ -27,13 +27,13 @@
             <header id="header" class="clear"> 
                 <!-- ################################################################################################ -->
                 <center>
-                    <div id="logo" class="">
-                        <a href="../template/index.xhtml">
-                            <img  src="../resources/images/logo1.png" alt=""/>
-                        </a>
-                    </div>
+                <div id="logo" class="">
+                    <a href="index.xhtml">
+                    <img  src="../resources/images/logo1.png" alt=""/>
+                    </a>
+                </div>
                 </center>
-
+                
                 <!-- ################################################################################################ --> 
             </header>
         </div>
@@ -42,8 +42,19 @@
         <!-- ################################################################################################ -->
         <div class="wrapper row2">
             <div class="rounded">
-                <h:form>   
-                    <nav id="mainav" class="clear"> 
+                <h:form>
+                <nav id="mainav" class="clear"> 
+                    <!-- ################################################################################################ -->
+                    <ul class="clear">
+                        <li class="active"><p:commandLink value='Acceuil'  action="/template/index.xhtml"  update=":middleColumn"> </p:commandLink></li>
+                    <li><a class="drop" href="#">Faculté</a>
+                        <ul>
+                            <li><p:commandLink value='Mot Du Doyen'  action="/article/MotDuDoyen.xhtml?faces-redirect=true"  update=":middleColumn" ></p:commandLink></li>
+                                <li><p:commandLink value="Architecture Pedagogique"  action='/article/architecturePedagogique.xhtml?faces-redirect=true' update=":middleColumn" ></p:commandLink></li>
+                                <li> <p:commandLink value="FSTG En bref"  action='/article/FSTGEnBref.xhtml?faces-redirect=true' ></p:commandLink></li>
+                                <li> <p:commandLink value="FSTG En chiffre"  action='/article/FSTGEnChiffr.xhtml?faces-redirect=true' ></p:commandLink></li>
+                                
+                                
 
                         <!-- ################################################################################################ -->
                         <ul class="clear">
@@ -95,50 +106,59 @@
                                     <li><a href="#">Emploi Du Temps</a></li>
 
 
-                                </ul>
-                            </li>
+                                
 
-                            <li><a class="drop" href="#">Recherche Scientifique</a>
-                                <ul>
-                                    <li><p:commandLink value="Laboratoires" action="/laboratoire/AllLaboratoire?faces-redirect=true"></p:commandLink></li>
-                                    <li><p:commandLink value="Bourse d'Excellence" action="../template/index.xhtml"></p:commandLink></li>
-                                    <li><p:commandLink value="CED-SI" action="../template/index.xhtml"></p:commandLink></li>
-                                    <li><p:commandLink value="UFR" action="../template/index.xhtml"></p:commandLink></li>
-
-                                </ul>
-                            </li>
-                            <li><a class="drop" href="#">Activités</a>
-                                <ul>
-                                    <li><a href="#">Manifestations</a></li>
-                                    <li><a href="#">Culturelles</a></li>
-                                    <li><a href="#">Clubs et Associations</a></li>
-                                    <li><a href="#">Sportives</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="drop" href="#">Espace Etudiant</a>
+                            <ul>
+                                <li><p:commandLink value="Reglement Interieur"  action='/article/reglementInterieur.xhtml?faces-redirect=true'   update=":middleColumn" ></p:commandLink></li>
+                        <li><p:commandLink value="Planning Annuel"  action="/article/planningAnnuel.xhtml?faces-redirect=true" update=":middleColumn" ></p:commandLink></li>
 
 
-                                </ul>
-                            </li>
-                            <li><a class="drop" href="#">En Ligne</a>
-                                <ul>
-                                    <li><a href="#">Platforme MOODLE</a></li>
-                                    <li><a href="#">Bibliothèque</a></li>
-                                    <li><a href="#">Messagerie</a></li>
-                                    <li><a href="#">Cours et Support</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a class="drop" href="#">Recherche Scientifique</a>
+                            <ul>
+                                <li><p:commandLink value="Labo"  update=":middleColumn" ></p:commandLink></li> <!-- 9adato fatima -->
+                                <li><p:commandLink value="Equipes"  action='/article/Equipes.xhtml?faces-redirect=true' update=":middleColumn" ></p:commandLink></li>
+                                <li><p:commandLink value="CED-SI"  action='/article/CED-SI.xhtml?faces-redirect=true' update=":middleColumn" ></p:commandLink></li>
+                                <li><p:commandLink value="UFR"  action='/article/UFR.xhtml?faces-redirect=true' update=":middleColumn" ></p:commandLink></li>
+                                    <li><p:commandLink value="Bourse d'Excellence"  action='/article/Bourse excellence.xhtml?faces-redirect=true' update=":middleColumn" ></p:commandLink></li>            
+                            </ul>
+                        </li>
+                        <li><a class="drop" href="#">Activités</a>
+                            <ul>
+                                <li><p:commandLink value="">Manifestations</p:commandLink></li>
+                                <li><p:commandLink value="">Culturelles</p:commandLink></li>
+                                <li><p:commandLink value="">Clubs et Associations</p:commandLink></li>
+                                <li><p:commandLink value="">Sportives</p:commandLink></li>
 
 
-                                </ul>
-                            </li>
+                            </ul>
+                        </li>
+                        <li><a class="drop" href="#">En Ligne</a>
+                            <ul>
+                                <li><a href="http://www.fstg-marrakech.ac.ma/moodle">Platform Moodle</a></li>
+                                <li><p:commandLink value=""  >Bibliothèque</p:commandLink></li>
+                                <li><p:commandLink value=""   >Messagerie</p:commandLink></li>
+                                <li><p:commandLink value=""  >Cours et Support</p:commandLink></li>
+
+
+                            </ul>
+                        </li>
 
 
 
-                        </ul>
-
-                        <!-- ################################################################################################ --> 
-                    </nav>
+                    </ul>
+                    <!-- ################################################################################################ --> 
+                </nav>
                 </h:form>
             </div>
         </div>
-
-
+        
+        
     </ui:composition>
 </html>
 

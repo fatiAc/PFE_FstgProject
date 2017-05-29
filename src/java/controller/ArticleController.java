@@ -3,6 +3,7 @@ package controller;
 import bean.Article;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
+import controller.util.ServerConfigUtil;
 import service.ArticleFacade;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.model.UploadedFile;
 
 @Named("articleController")
 @SessionScoped
@@ -27,8 +29,15 @@ public class ArticleController implements Serializable {
     private service.ArticleFacade ejbFacade;
     private List<Article> items = null;
     private Article selected;
+    private Article contentToRender;
+    private Article selectedActivite;
+    private Article selectedRecherche;
+    private Article selectedFaculte;
+    private Article selectedEspaceEtudiant;
+    private UploadedFile uploadedFile;
 
     public ArticleController() {
+
     }
 
     public Article getSelected() {
@@ -37,6 +46,54 @@ public class ArticleController implements Serializable {
 
     public void setSelected(Article selected) {
         this.selected = selected;
+    }
+
+    public Article getSelectedActivite() {
+        return selectedActivite;
+    }
+
+    public UploadedFile getUploadedFile() {
+        return uploadedFile;
+    }
+
+    public void setUploadedFile(UploadedFile uploadedFile) {
+        this.uploadedFile = uploadedFile;
+    }
+
+    public void setSelectedActivite(Article selectedActivite) {
+        this.selectedActivite = selectedActivite;
+    }
+
+    public Article getContentToRender() {
+        return contentToRender;
+    }
+
+    public void setContentToRender(Article contentToRender) {
+        this.contentToRender = contentToRender;
+    }
+
+    public Article getSelectedRecherche() {
+        return selectedRecherche;
+    }
+
+    public void setSelectedRecherche(Article selectedRecherche) {
+        this.selectedRecherche = selectedRecherche;
+    }
+
+    public Article getSelectedFaculte() {
+        return selectedFaculte;
+    }
+
+    public void setSelectedFaculte(Article selectedFaculte) {
+        this.selectedFaculte = selectedFaculte;
+    }
+
+    public Article getSelectedEspaceEtudiant() {
+        return selectedEspaceEtudiant;
+    }
+
+    public void setSelectedEspaceEtudiant(Article selectedEspaceEtudiant) {
+        this.selectedEspaceEtudiant = selectedEspaceEtudiant;
     }
 
     protected void setEmbeddableKeys() {
@@ -49,13 +106,69 @@ public class ArticleController implements Serializable {
         return ejbFacade;
     }
 
+    public List<Article> findArticleByType(int type) {
+
+        return ejbFacade.findArticleByType(type);
+    }
+
+    public Article findArticleByTitle() {
+        contentToRender = ejbFacade.findArticleByTitle(selected.getTitle());
+        return ejbFacade.findArticleByTitle(selected.getTitle());
+    }
+
+    public Article findArticleByTitle(String title) {
+        return ejbFacade.findArticleByTitle(title);
+    }
+
+    public void handleUpload() {
+
+        String destinationPath = ServerConfigUtil.getArticleFilePath();
+        String nameOfUploadedFile = uploadedFile.getFileName();
+        ServerConfigUtil.upload(uploadedFile, destinationPath, nameOfUploadedFile);
+        ejbFacade.clone(selected).getImages().add("../resources/images/UploadedImages/" + nameOfUploadedFile);
+
+    }
+
     public Article prepareCreate() {
+
         selected = new Article();
         initializeEmbeddableKey();
         return selected;
     }
 
+    public void setDefaultContent() {
+        contentToRender = ejbFacade.findArticleByTitle("Home");
+
+    }
+
+    public boolean checkContentTorender(String title) {
+        boolean i = false;
+
+        if (contentToRender == null) {
+            i = false;
+
+        } else {
+            
+           
+                if (contentToRender.getTitle().equals(title)) {
+                    i = true;
+
+                } else {
+                    i = false;
+                }
+
+            }
+            return i;
+        }
+   
+
+    public String setRenderedContent(String title) {
+        contentToRender = ejbFacade.findArticleByTitle(title);
+        return "/template/menu.xhtml" ;
+    }
+
     public void create() {
+        handleUpload();
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ArticleCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -67,6 +180,7 @@ public class ArticleController implements Serializable {
     }
 
     public void destroy() {
+
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("ArticleDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
@@ -83,6 +197,7 @@ public class ArticleController implements Serializable {
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
+            //Filter Content Input !!! 
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
