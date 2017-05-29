@@ -16,50 +16,20 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author hp
+ * @author Abed
  */
 @Entity
-public class Module implements Serializable {
+public class Demande implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nom;
-    @OneToMany(mappedBy = "module")
-    private List<NoteModulaire> noteModulaires;
-
     @ManyToOne
-    private Semestre semestre;
-
-    @ManyToOne
-    private Enseignant enseignant;
-
-    @ManyToOne
-    private Filiere filiere;
-
-    public Module(String nom) {
-        this.nom = nom;
-    }
-
-    public List<NoteModulaire> getNoteModulaires() {
-        return noteModulaires;
-    }
-
-    public void setNoteModulaires(List<NoteModulaire> noteModulaires) {
-        this.noteModulaires = noteModulaires;
-    }
-
-    public Enseignant getEnseignant() {
-        return enseignant;
-    }
-
-    public void setEnseignant(Enseignant enseignant) {
-        this.enseignant = enseignant;
-    }
-
-    public Module() {
-    }
+    private Etudiant etudiant;
+    private String description;
+    @OneToMany(mappedBy = "demande")
+    private List<DemandeItem> demandeItems;
 
     public Long getId() {
         return id;
@@ -69,30 +39,30 @@ public class Module implements Serializable {
         this.id = id;
     }
 
-    public Semestre getSemestre() {
-        return semestre;
+    public Etudiant getEtudiant() {
+        return etudiant;
     }
 
-    public void setSemestre(Semestre semestre) {
-        this.semestre = semestre;
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
     }
 
-    public String getNom() {
-        return nom;
+    public List<DemandeItem> getDemandeItems() {
+        return demandeItems;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setDemandeItems(List<DemandeItem> demandeItems) {
+        this.demandeItems = demandeItems;
     }
 
-    public Filiere getFiliere() {
-        return filiere;
+    public String getDescription() {
+        return description;
     }
 
-    public void setFiliere(Filiere filiere) {
-        this.filiere = filiere;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -103,10 +73,10 @@ public class Module implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Module)) {
+        if (!(object instanceof Demande)) {
             return false;
         }
-        Module other = (Module) object;
+        Demande other = (Demande) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -115,7 +85,7 @@ public class Module implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Module[ id=" + id + " ]";
+        return "bean.Demande[ id=" + id + " ]";
     }
-
+    
 }

@@ -6,67 +6,45 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
- * @author hp
+ * @author Abed
  */
 @Entity
-public class Module implements Serializable {
+public class DemandeItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nom;
-    @OneToMany(mappedBy = "module")
-    private List<NoteModulaire> noteModulaires;
-
+    @ManyToOne
+    private Module module;
     @ManyToOne
     private Semestre semestre;
 
     @ManyToOne
-    private Enseignant enseignant;
-
-    @ManyToOne
-    private Filiere filiere;
-
-    public Module(String nom) {
-        this.nom = nom;
-    }
-
-    public List<NoteModulaire> getNoteModulaires() {
-        return noteModulaires;
-    }
-
-    public void setNoteModulaires(List<NoteModulaire> noteModulaires) {
-        this.noteModulaires = noteModulaires;
-    }
-
-    public Enseignant getEnseignant() {
-        return enseignant;
-    }
-
-    public void setEnseignant(Enseignant enseignant) {
-        this.enseignant = enseignant;
-    }
-
-    public Module() {
-    }
-
+    private Demande demande;
+    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
     }
 
     public Semestre getSemestre() {
@@ -77,20 +55,12 @@ public class Module implements Serializable {
         this.semestre = semestre;
     }
 
-    public String getNom() {
-        return nom;
+    public Demande getDemande() {
+        return demande;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public Filiere getFiliere() {
-        return filiere;
-    }
-
-    public void setFiliere(Filiere filiere) {
-        this.filiere = filiere;
+    public void setDemande(Demande demande) {
+        this.demande = demande;
     }
 
     @Override
@@ -103,10 +73,10 @@ public class Module implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Module)) {
+        if (!(object instanceof DemandeItem)) {
             return false;
         }
-        Module other = (Module) object;
+        DemandeItem other = (DemandeItem) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -115,7 +85,7 @@ public class Module implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Module[ id=" + id + " ]";
+        return "bean.DemandeItem[ id=" + id + " ]";
     }
-
+    
 }

@@ -6,9 +6,13 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 import org.hibernate.validator.constraints.Email;
 
 /**
@@ -29,9 +33,134 @@ public class Etudiant implements Serializable {
     @ManyToOne
     private EquipeRecherche equipeRecherche;
 
+    private String password;
+    /* Wrote By Youssef */
+    private boolean mdpChanged;
+    private boolean blocked;
+    private int nbrCnx;
+    /* Wrote By Youssef */
+    @ManyToOne
+    private Semestre semestreActuel;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateNaissance;
+
+    @OneToMany(mappedBy = "etudiant")
+    private List<Device> devices;
+
+    @OneToMany(mappedBy = "etudiant")
+    private List<Demande> demandes;
+    
+    @OneToMany(mappedBy = "etudiant")
+    private List<NoteAnnuelle> noteAnnuelles;
+    
+    @OneToMany(mappedBy = "etudiant")
+    private List<NoteSemestre> noteSemestres;
+    
+    @OneToMany(mappedBy = "etudiant")
+    private List<NoteModulaire> noteModulaires;
+    
+    @ManyToOne
+    private Filiere filiere;
     public Etudiant() {
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isMdpChanged() {
+        return mdpChanged;
+    }
+
+    public void setMdpChanged(boolean mdpChanged) {
+        this.mdpChanged = mdpChanged;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
+    public int getNbrCnx() {
+        return nbrCnx;
+    }
+
+    public void setNbrCnx(int nbrCnx) {
+        this.nbrCnx = nbrCnx;
+    }
+
+    public Semestre getSemestreActuel() {
+        return semestreActuel;
+    }
+
+    public void setSemestreActuel(Semestre semestreActuel) {
+        this.semestreActuel = semestreActuel;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public List<Device> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(List<Device> devices) {
+        this.devices = devices;
+    }
+
+    public List<Demande> getDemandes() {
+        return demandes;
+    }
+
+    public void setDemandes(List<Demande> demandes) {
+        this.demandes = demandes;
+    }
+
+    public List<NoteAnnuelle> getNoteAnnuelles() {
+        return noteAnnuelles;
+    }
+
+    public void setNoteAnnuelles(List<NoteAnnuelle> noteAnnuelles) {
+        this.noteAnnuelles = noteAnnuelles;
+    }
+
+    public List<NoteSemestre> getNoteSemestres() {
+        return noteSemestres;
+    }
+
+    public void setNoteSemestres(List<NoteSemestre> noteSemestres) {
+        this.noteSemestres = noteSemestres;
+    }
+
+    public List<NoteModulaire> getNoteModulaires() {
+        return noteModulaires;
+    }
+
+    public void setNoteModulaires(List<NoteModulaire> noteModulaires) {
+        this.noteModulaires = noteModulaires;
+    }
+
+    public Filiere getFiliere() {
+        return filiere;
+    }
+
+    public void setFiliere(Filiere filiere) {
+        this.filiere = filiere;
+    }
+
+    
     public EquipeRecherche getEquipeRecherche() {
         return equipeRecherche;
     }

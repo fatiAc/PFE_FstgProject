@@ -18,6 +18,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.event.FileUploadEvent;
 
 @Named("departementController")
 @SessionScoped
@@ -27,13 +28,23 @@ public class DepartementController implements Serializable {
     private service.DepartementFacade ejbFacade;
     private List<Departement> items = null;
     private Departement selected;
+    private FileUploadEvent fileUploadEvent;
+
+    public void upload(FileUploadEvent event) {
+        // selected = ejbFacade.find(SessionUtil.getCurrentCommune().getId());
+        // selected.setSignature(System.currentTimeMillis() + ".png");
+        // selected.setLogo(System.currentTimeMillis() + ".png");
+        fileUploadEvent = event;
+        //fileUploadEvents.add(event);
+        //System.out.println("list event :: " + fileUploadEvents);
+    }
 
     public DepartementController() {
     }
 
     public Departement getSelected() {
-        if(selected==null){
-            selected=new Departement();
+        if (selected == null) {
+            selected = new Departement();
         }
         return selected;
     }
@@ -89,11 +100,19 @@ public class DepartementController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    getFacade().edit(selected);
+                    if (fileUploadEvent != null) {
+                        System.out.println("uploaaad :::: " + fileUploadEvent);
+                        //ejbFacade.update(selected, fileUploadEvent);
+                        getFacade().edit(selected);
+                        JsfUtil.addSuccessMessage(successMessage);
+                    } else {
+                        JsfUtil.addErrorMessage("Veuilliez charger une image");
+                    }
+
                 } else {
                     getFacade().remove(selected);
+                    JsfUtil.addSuccessMessage(successMessage);
                 }
-                JsfUtil.addSuccessMessage(successMessage);
             } catch (EJBException ex) {
                 String msg = "";
                 Throwable cause = ex.getCause();
@@ -163,6 +182,14 @@ public class DepartementController implements Serializable {
             }
         }
 
+    }
+
+    public FileUploadEvent getFileUploadEvent() {
+        return fileUploadEvent;
+    }
+
+    public void setFileUploadEvent(FileUploadEvent fileUploadEvent) {
+        this.fileUploadEvent = fileUploadEvent;
     }
 
 }
