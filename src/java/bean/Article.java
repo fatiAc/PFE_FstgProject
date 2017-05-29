@@ -7,17 +7,16 @@ package bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
-import org.primefaces.model.UploadedFile;
 
 /**
  *
- * @author hp
+ * @author mac
  */
 @Entity
 public class Article implements Serializable {
@@ -26,95 +25,12 @@ public class Article implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String titre;
-    private String contenu;
-    private String type;
-    private int priority;
-    @OneToOne
-    private Enseignant auteur;
+    private String content;
+    private String title;
+    private List<String> images ;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateCreation;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateDebut;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateExpiration;
-    private UploadedFile file;
-  
-
-    public UploadedFile getFile() {
-        return file;
-    }
-
-    public void setFile(UploadedFile file) {
-        this.file = file;
-    }
-
-   
-    
-
-    public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Enseignant getAuteur() {
-        return auteur;
-    }
-
-    public void setAuteur(Enseignant auteur) {
-        this.auteur = auteur;
-    }
-
-    public Date getDateCreation() {
-        return dateCreation;
-    }
-
-    public void setDateCreation(Date dateCreation) {
-        this.dateCreation = dateCreation;
-    }
-
-    public Date getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public Date getDateExpiration() {
-        return dateExpiration;
-    }
-
-    public void setDateExpiration(Date dateExpiration) {
-        this.dateExpiration = dateExpiration;
-    }
-
-    public String getContenu() {
-        return contenu;
-    }
-
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
+    private Date datePublication;
+    private int type;
 
     public Long getId() {
         return id;
@@ -122,6 +38,48 @@ public class Article implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    
+
+    public Date getDatePublication() {
+        return datePublication;
+    }
+
+    public void setDatePublication(Date datePublication) {
+        this.datePublication = datePublication;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     @Override
@@ -146,7 +104,7 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Article[ id=" + id + " ]";
+        return title;
     }
 
 }
