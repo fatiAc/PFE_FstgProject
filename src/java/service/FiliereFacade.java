@@ -29,11 +29,12 @@ public class FiliereFacade extends AbstractFacade<Filiere> {
     public FiliereFacade() {
         super(Filiere.class);
     }
-    
-    public List<Filiere> findByType(int x){
-        String requette="SELECT f FROM Filiere f WHERE f.type="+x;
+
+    public List<Filiere> findByType(int x, int y) {
+        String requette = "SELECT f FROM Filiere f WHERE f.typeFiliere='" + x + "' AND f.typeFormation='" + y + "'";
         System.out.println(requette);
         return em.createQuery(requette).getResultList();
-}
-    
+    }
+   
+
 }

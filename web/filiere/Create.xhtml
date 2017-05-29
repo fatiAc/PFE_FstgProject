@@ -25,12 +25,19 @@
                                            itemValue="#{responsableFiliereItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="Type" for="type" />
-                        <p:selectOneMenu id="type" value="#{filiereController.selected.type}" >
+                        <p:selectOneMenu id="type" value="#{filiereController.selected.typeFiliere}" >
+                            <f:selectItem itemLabel="--SELECT--"/>
                             <f:selectItem itemLabel="TC" itemValue="1"/>
                             <f:selectItem itemLabel="Licence" itemValue="2"/>
                             <f:selectItem itemLabel="Cycle d'ingenieurs" itemValue="3"/>
                             <f:selectItem itemLabel="Master" itemValue="4"/>
                             <f:selectItem itemLabel="Doctorat" itemValue="5"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Type formation" for="typeFormation" />
+                        <p:selectOneMenu id="typeFormation" value="#{filiereController.selected.typeFormation}" >
+                            <f:selectItem itemLabel="---SELECT---"/>
+                            <f:selectItem itemLabel="Initial" itemValue="1"/>
+                            <f:selectItem itemLabel="Continue" itemValue="2"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateFiliereLabel_departement}" for="departement" />
                         <p:selectOneMenu id="departement" value="#{filiereController.selected.departement}" >
