@@ -20,6 +20,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.event.FileUploadEvent;
 
 @Named("departementController")
 @SessionScoped
@@ -56,6 +57,17 @@ public class DepartementController implements Serializable {
 
 
     public DepartementController() {
+    }
+
+    public Departement getSelected() {
+        if (selected == null) {
+            selected = new Departement();
+        }
+        return selected;
+    }
+
+    public void setSelected(Departement selected) {
+        this.selected = selected;
     }
 
     protected void setEmbeddableKeys() {
@@ -105,11 +117,11 @@ public class DepartementController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    getFacade().edit(selected);
-                } else {
+                        getFacade().edit(selected);
+                    } else {
                     getFacade().remove(selected);
-                }
-                JsfUtil.addSuccessMessage(successMessage);
+                    }
+                    JsfUtil.addSuccessMessage(successMessage);
             } catch (EJBException ex) {
                 String msg = "";
                 Throwable cause = ex.getCause();
@@ -181,16 +193,7 @@ public class DepartementController implements Serializable {
 
     }
 
-    public Departement getSelected() {
-        if (selected == null) {
-            selected = new Departement();
-        }
-        return selected;
-    }
-
-    public void setSelected(Departement selected) {
-        this.selected = selected;
-    }
+   
 
     public List<Enseignant> getEnseignants() {
         return enseignants;
@@ -232,6 +235,6 @@ public class DepartementController implements Serializable {
         this.cycle = cycle;
     }
 
-   
+  
 
 }

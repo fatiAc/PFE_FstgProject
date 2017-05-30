@@ -12,32 +12,18 @@
             <h:form id="ArticleViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{articleController.selected != null}">
-                        <h:outputText value="#{bundle.ViewArticleLabel_file}"/>
-                        <h:outputText value="#{articleController.selected.file}" title="#{bundle.ViewArticleTitle_file}"/>
-                        <h:outputText value="#{bundle.ViewArticleLabel_priority}"/>
-                        <h:outputText value="#{articleController.selected.priority}" title="#{bundle.ViewArticleTitle_priority}"/>
-                        <h:outputText value="#{bundle.ViewArticleLabel_type}"/>
-                        <h:outputText value="#{articleController.selected.type}" title="#{bundle.ViewArticleTitle_type}"/>
-                        <h:outputText value="#{bundle.ViewArticleLabel_auteur}"/>
-                        <h:outputText value="#{articleController.selected.auteur}" title="#{bundle.ViewArticleTitle_auteur}"/>
-                        <h:outputText value="#{bundle.ViewArticleLabel_dateCreation}"/>
-                        <h:outputText value="#{articleController.selected.dateCreation}" title="#{bundle.ViewArticleTitle_dateCreation}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
-                        <h:outputText value="#{bundle.ViewArticleLabel_dateDebut}"/>
-                        <h:outputText value="#{articleController.selected.dateDebut}" title="#{bundle.ViewArticleTitle_dateDebut}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
-                        <h:outputText value="#{bundle.ViewArticleLabel_dateExpiration}"/>
-                        <h:outputText value="#{articleController.selected.dateExpiration}" title="#{bundle.ViewArticleTitle_dateExpiration}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
-                        <h:outputText value="#{bundle.ViewArticleLabel_contenu}"/>
-                        <h:outputText value="#{articleController.selected.contenu}" title="#{bundle.ViewArticleTitle_contenu}"/>
-                        <h:outputText value="#{bundle.ViewArticleLabel_titre}"/>
-                        <h:outputText value="#{articleController.selected.titre}" title="#{bundle.ViewArticleTitle_titre}"/>
                         <h:outputText value="#{bundle.ViewArticleLabel_id}"/>
                         <h:outputText value="#{articleController.selected.id}" title="#{bundle.ViewArticleTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewArticleLabel_content}"/>
+                        <h:outputText value="#{articleController.selected.content}" title="#{bundle.ViewArticleTitle_content}"/>
+                        <h:outputText value="#{bundle.ViewArticleLabel_title}"/>
+                        <h:outputText value="#{articleController.selected.title}" title="#{bundle.ViewArticleTitle_title}"/>
+                        <h:outputText value="#{bundle.ViewArticleLabel_type}"/>
+                        
+                        <h:outputText value="#{bundle.ViewArticleLabel_datePublication}"/>
+                        <h:outputText value="#{articleController.selected.datePublication}" title="#{bundle.ViewArticleLabel_datePublication}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ArticleViewDialog.hide()"/>
                 </h:panelGroup>

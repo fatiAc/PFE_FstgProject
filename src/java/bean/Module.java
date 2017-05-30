@@ -6,11 +6,13 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,25 +26,44 @@ public class Module implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
+    @OneToMany(mappedBy = "module")
+    private List<NoteModulaire> noteModulaires;
+
     @ManyToOne
     private Semestre semestre;
-    
+
+    @ManyToOne
+    private Enseignant enseignant;
+
     @ManyToOne
     private Filiere filiere;
 
-    
     public Module(String nom) {
         this.nom = nom;
+    }
+
+    public List<NoteModulaire> getNoteModulaires() {
+        return noteModulaires;
+    }
+
+    public void setNoteModulaires(List<NoteModulaire> noteModulaires) {
+        this.noteModulaires = noteModulaires;
+    }
+
+    public Enseignant getEnseignant() {
+        return enseignant;
+    }
+
+    public void setEnseignant(Enseignant enseignant) {
+        this.enseignant = enseignant;
     }
 
     public Module() {
     }
 
-    
     public Long getId() {
         return id;
     }
-    
 
     public void setId(Long id) {
         this.id = id;
@@ -56,7 +77,6 @@ public class Module implements Serializable {
         this.semestre = semestre;
     }
 
-   
     public String getNom() {
         return nom;
     }
@@ -65,7 +85,6 @@ public class Module implements Serializable {
         this.nom = nom;
     }
 
-  
     public Filiere getFiliere() {
         return filiere;
     }

@@ -30,6 +30,11 @@ public class Enseignant implements Serializable {
     private String nom;
     private String prenom;
     private String tel;
+     private String password;
+     private boolean blocked;
+    private int nbrCnx;
+    private boolean mdpChanged;
+    private boolean admine;
     private String grade;
     @Email
     private String email;
@@ -43,6 +48,47 @@ public class Enseignant implements Serializable {
     public Filiere getFiliere() {
         return filiere;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
+    public int getNbrCnx() {
+        return nbrCnx;
+    }
+
+    public void setNbrCnx(int nbrCnx) {
+        this.nbrCnx = nbrCnx;
+    }
+
+    public boolean isMdpChanged() {
+        return mdpChanged;
+    }
+
+    public void setMdpChanged(boolean mdpChanged) {
+        this.mdpChanged = mdpChanged;
+    }
+
+    public boolean isAdmine() {
+        return admine;
+    }
+
+    public void setAdmine(boolean admine) {
+        this.admine = admine;
+    }
+    
 
     public String getTel() {
         return tel;

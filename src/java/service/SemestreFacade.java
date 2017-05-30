@@ -36,7 +36,7 @@ public class SemestreFacade extends AbstractFacade<Semestre> {
         String requette = "SELECT s FROM Semestre s WHERE 1=1 ";
         if (f != null && f.getId() != null) {
             requette += SearchUtil.addConstraint("s.filiere", "id", "=", f.getId());
-            requette += " ORDER BY s.numero";
+            requette += " ORDER BY s.libelle";
             System.out.println(requette);
             return em.createQuery(requette).getResultList();
         } else {

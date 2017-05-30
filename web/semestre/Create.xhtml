@@ -19,7 +19,7 @@
                                            itemValue="#{filiereItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateSemestreLabel_numero}" for="numero" />
-                        <p:inputText id="numero" value="#{semestreController.selected.numero}" title="#{bundle.CreateSemestreTitle_numero}" />
+                        <p:inputText id="numero" value="#{semestreController.selected.libelle}" title="#{bundle.CreateSemestreTitle_numero}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{semestreController.create}" value="#{bundle.Save}" update="display,:SemestreListForm:datalist,:growl" oncomplete="handleSubmit(args,'SemestreCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="SemestreCreateDialog.hide()"/>

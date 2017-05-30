@@ -15,6 +15,13 @@
     <class>bean.Etudiant</class>
     <class>bean.ThemeRecherche</class>
     <class>bean.Message</class>
+    <class>bean.Annee</class>
+    <class>bean.Demande</class>
+    <class>bean.DemandeItem</class>
+    <class>bean.Device</class>
+    <class>bean.NoteAnnuelle</class>
+    <class>bean.NoteModulaire</class>
+    <class>bean.NoteSemestre</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

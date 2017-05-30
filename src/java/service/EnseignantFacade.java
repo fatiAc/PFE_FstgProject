@@ -15,19 +15,19 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author HP
+ * @author Abed
  */
 @Stateless
 public class EnseignantFacade extends AbstractFacade<Enseignant> {
-
+    
     @PersistenceContext(unitName = "Pfe_FstgProjectPU")
     private EntityManager em;
-
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
     public EnseignantFacade() {
         super(Enseignant.class);
     }

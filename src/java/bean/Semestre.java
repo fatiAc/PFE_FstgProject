@@ -25,19 +25,29 @@ public class Semestre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int numero;
+    private int libelle;
    
     @ManyToOne
     private Filiere filiere;
 
     @OneToMany(mappedBy = "semestre")
     private List<Module> modules;
+    @ManyToOne
+    private Annee annee;
 
     public Semestre() {
     }
 
     public Semestre(int numero) {
-        this.numero = numero;
+        this.libelle = numero;
+    }
+
+    public Annee getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(Annee annee) {
+        this.annee = annee;
     }
 
     
@@ -66,12 +76,12 @@ public class Semestre implements Serializable {
         this.filiere = filiere;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getLibelle() {
+        return libelle;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setLibelle(int libelle) {
+        this.libelle = libelle;
     }
 
    
@@ -98,7 +108,7 @@ public class Semestre implements Serializable {
 
     @Override
     public String toString() {
-        return "Semestre "+numero;
+        return "Semestre "+libelle;
     }
 
 }
