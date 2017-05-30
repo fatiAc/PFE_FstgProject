@@ -31,7 +31,8 @@ public class Filiere implements Serializable {
     private String objectif;
     @OneToMany(mappedBy = "filiere")
     private List<Enseignant> enseignants;
-    private int type ;//1:TC ,2:licence ,3:cycle ,4:master
+    private int typeFiliere ;//1:TC ,2:licence ,3:cycle ,4:master
+    private int typeFormation ; // 1=>Initial , 2==> continue
     @ManyToOne
     private Departement departement;
     @OneToOne
@@ -39,9 +40,22 @@ public class Filiere implements Serializable {
     @OneToMany(mappedBy = "filiere")
     private List<Module> modules;
 
+    public Filiere() {
+    }
+
+    public int getTypeFormation() {
+        return typeFormation;
+    }
+
+    public void setTypeFormation(int typeFormation) {
+        this.typeFormation = typeFormation;
+    }
+
+    
     public List<Module> getModules() {
         return modules;
     }
+    
 
     public String getAbreviation() {
         return abreviation;
@@ -66,12 +80,12 @@ public class Filiere implements Serializable {
     }
     
 
-    public int getType() {
-        return type;
+    public int getTypeFiliere() {
+        return typeFiliere;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setTypeFiliere(int typeFiliere) {
+        this.typeFiliere = typeFiliere;
     }
 
     public Enseignant getResponsableFiliere() {

@@ -30,6 +30,7 @@ public class Enseignant implements Serializable {
     private String nom;
     private String prenom;
     private String tel;
+    private String grade;
     @Email
     private String email;
     @ManyToOne
@@ -54,6 +55,15 @@ public class Enseignant implements Serializable {
     public List<EquipeRecherche> getEquipeRecherches() {
         return equipeRecherches;
     }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+    
 
     public void setEquipeRecherches(List<EquipeRecherche> equipeRecherches) {
         this.equipeRecherches = equipeRecherches;

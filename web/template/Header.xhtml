@@ -12,7 +12,7 @@
                 <nav>
                     <ul>
                         <li><a href="../template/index.xhtml">Acceuil</a></li>
-                        <li><a href="../contact/contactUniversity.xhtml">Contactez Nous</a></li>
+                        <li><p:commandLink value="Contactez Nous" action="#{messageController.prepareCreate()}"></p:commandLink></li>
                         <li><a href="../connexion/LoginEtudiant.xhtml">Login Etudiant</a></li>
                         <li><a href="../connexion/LoginStaff.xhtml">Login Staff</a></li>
                     </ul>
@@ -55,19 +55,9 @@
                                     <li><a href="#">Organisation</a></li>
                                     <li><a href="#">FSTG en Bref</a></li>
                                     <li><a href="#">FSTG en Chiffre</a></li>
-                                    <li><a class="drop" href="#">Departements</a>
-                                        <ul>
-                                            <li><a href="#">Informatique</a></li>
-                                            <li><a href="#">Mathématique</a></li>
-                                            <li><a href="#">Biologie</a></li>
-                                            <li><a href="#">Physique Appliquée</a></li>
-                                            <li><a href="#">Sciences Chimiques</a></li>
-                                            <li><a href="#">Sciences de la Terre</a></li>
-
-                                        </ul>
-                                    </li>
+                                    <li><p:commandLink value="Departements" action="/departement/Departement?faces-redirect=true"/></li>
                                 </ul>
-                            </li>
+                                    </li>
 
                             <li><a class="drop">Formation</a>
                                 <ul>
@@ -82,7 +72,7 @@
                                     </li>
                                     <li><a class="drop" href="#">Formation Continue</a>
                                         <ul>
-                                            <li><a href="#">Licence Professionelle</a></li>
+                                            <li><p:commandLink value="Licence Professionelle" action="#{filiereController.toLicenceContinu()}"></p:commandLink></li>
                                         </ul>
                                     </li>
                                 </ul>

@@ -37,63 +37,100 @@ public class FiliereController implements Serializable {
     private List<Semestre> semestres;
     private Semestre semestre;
     private int typeFilier;
+    private int typFormation;
+    private String filiereEnLettre;
 
     public List<Filiere> findFiliere() {
-        return ejbFacade.findByType(typeFilier);
+        return ejbFacade.findByType(typeFilier, typFormation);
     }
 
-    public String typToLetter() {
-        String type;
+    public String typFilierToLetter() {
+        String typFilier;
         if (typeFilier == 1) {
-            type = "Tron commun";
-            return type;
+            typFilier = "Tron commun";
+            return typFilier;
         }
         if (typeFilier == 2) {
-            type = "Licence science et technique";
-            return type;
+            typFilier = "Licence science et technique";
+            return typFilier;
         }
         if (typeFilier == 3) {
-            type = "Cycle d'ingenieurs";
-            return type;
+            typFilier = "Cycle d'ingenieurs";
+            return typFilier;
         }
         if (typeFilier == 4) {
-            type = "Master science et technique";
-            return type;
+            typFilier = "Master science et technique";
+            return typFilier;
         }
-        return "==";
+
+        return "";
     }
 
+    public String typFormatToLettre() {
+        String typeFormation;
+        if (typFormation == 1) {
+            typeFormation = "Formation initiale";
+            return typeFormation;
+        }
+        if (typFormation == 2) {
+            typeFormation = "Formation continue";
+            return typeFormation;
+        }
+        return "";
+    }
+
+    public String redirect(int x, int y) {
+        filieres = ejbFacade.findByType(x, y);
+        return "/filiere/FormationInitial?faces-redirect=true";
+    }
 
     public String toTC() {
         typeFilier = 1;
-        return redirect(1);
-    }
-
-    public String redirect(int x) {
-        filieres = ejbFacade.findByType(x);
-        System.out.println("ejbfind");
-        return "/filiere/FormationInitial?faces-redirect=true";
+        typFormation = 1;
+        return redirect(1, 1);
     }
 
     public String toLicence() {
         typeFilier = 2;
-        return redirect(2);
+        typFormation = 1;
+        return redirect(2, 1);
     }
 
     public String toCycle() {
         typeFilier = 3;
-        return redirect(3);
+        typFormation = 1;
+        return redirect(3, 1);
     }
 
     public String toMaster() {
         typeFilier = 4;
-        return redirect(4);
+        typFormation = 1;
+        return redirect(4, 1);
     }
 
     public String toDetailFilier(Filiere f) {
         filiere = f;
         semestres = semestreFacade.findByFiliere(f);
         return "/filiere/DetailFiliere?faces-redirect=true";
+    }
+
+    public String toLicenceContinu() {
+        return redirect(2, 2);
+    }
+
+    public String toMasterContinu() {
+        typeFilier = 4;
+        typFormation = 2;
+        return redirect(4, 2);
+    }
+
+    //s'il y a une creation d'une branche de master continu apres=> un lien vas etre generer automatiquement!!
+    public String linkOfMasterContinue() {
+        filieres = ejbFacade.findByType(4, 2);
+        if (filieres.size() > 0) {
+            return "<li><p:commandLink value=" + "Master" + " action=" + "#{filiereController.toMasterContinu())}" + "/></li>";
+        }
+        return "";
     }
 
     public List<Semestre> findSemstreByFilier() {
@@ -236,7 +273,7 @@ public class FiliereController implements Serializable {
 
     public int getTypeFilier() {
         return typeFilier;
-}
+    }
 
     public void setTypeFilier(int typeFilier) {
         this.typeFilier = typeFilier;
@@ -278,6 +315,14 @@ public class FiliereController implements Serializable {
 
     public void setSemestres(List<Semestre> semestres) {
         this.semestres = semestres;
+    }
+
+    public int getTypFormation() {
+        return typFormation;
+    }
+
+    public void setTypFormation(int typFormation) {
+        this.typFormation = typFormation;
     }
 
 }

@@ -6,9 +6,12 @@
 package service;
 
 import bean.Departement;
+import controller.util.ServerConfig;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.primefaces.event.FileUploadEvent;
 
 /**
  *
@@ -29,4 +32,19 @@ public class DepartementFacade extends AbstractFacade<Departement> {
         super(Departement.class);
     }
     
+    public List<Departement> findAllDeprtm(){
+        return em.createQuery("SELECT d FROM Departement d WHERE 1=1 ORDER BY d.intitule").getResultList();
+    }
+    
+    public void update(Departement d, FileUploadEvent fileUploadEvent) {
+        System.out.println("FIle name uploaded :::::: "+fileUploadEvent.getFile().getFileName()); 
+        //System.out.println("logo avant create(commune); " + d.getSignature());
+        edit(d);
+       // System.out.println("logo avant create(commune); " + d.getSignature());
+        ServerConfig.createDepartmFiles(d);
+        FileUploadEvent event = fileUploadEvent;
+        //SessionUtil.getCurrentCommune().setSignature(commune.getSignature());
+      //  String chemin = CreateFileUtil.getPath("resources")+"\\signatures\\commune_"+SessionUtil.getCurrentCommune().getNom()+"_"+SessionUtil.getCurrentCommune().getId();
+       // ServerConfig.upload(event.getFile(), chemin, d.getImg());
+}
 }

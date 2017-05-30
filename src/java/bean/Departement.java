@@ -26,6 +26,8 @@ public class Departement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String intitule;
+    private String img;
+    private String description;
     
     @OneToMany(mappedBy = "departement")
     private List<Filiere> filieres;
@@ -37,7 +39,26 @@ public class Departement implements Serializable {
         return filieres;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public Enseignant getChefDepartement() {
+        if(chefDepartement==null){
+            chefDepartement=new  Enseignant();
+        }
         return chefDepartement;
     }
 
@@ -50,6 +71,7 @@ public class Departement implements Serializable {
     }
 
     public List<Enseignant> getEnseignants() {
+       
         return enseignants;
     }
 

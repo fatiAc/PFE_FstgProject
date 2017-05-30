@@ -35,13 +35,11 @@ public class SemestreFacade extends AbstractFacade<Semestre> {
     public List<Semestre> findByFiliere(Filiere f) {
         String requette = "SELECT s FROM Semestre s WHERE 1=1 ";
         if (f != null && f.getId() != null) {
-            System.out.println("============SemestreFacade==findByFiliere hahya dik lfilr " + f);
             requette += SearchUtil.addConstraint("s.filiere", "id", "=", f.getId());
             requette += " ORDER BY s.numero";
             System.out.println(requette);
             return em.createQuery(requette).getResultList();
         } else {
-            System.out.println("=============no dataFound==========");
             return null;
         }
     }

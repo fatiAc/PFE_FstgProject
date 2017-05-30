@@ -5,7 +5,10 @@
  */
 package service;
 
+import bean.Departement;
 import bean.Enseignant;
+import controller.util.SearchUtil;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +31,14 @@ public class EnseignantFacade extends AbstractFacade<Enseignant> {
     public EnseignantFacade() {
         super(Enseignant.class);
     }
-    
+
+    public List<Enseignant> findByDepartm(Departement d) {
+        String requette = "SELECT ens FROM Enseignant ens WHERE 1=1";
+        if (d.getId() != null && d != null) {
+            requette +=SearchUtil.addConstraint("ens.departement", "id", "=", d.getId());
+            requette+=" ORDER BY ens.nom";
+        }
+        return em.createQuery(requette).getResultList();
+    }
+
 }

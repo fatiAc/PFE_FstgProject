@@ -1,6 +1,8 @@
 package controller;
 
 import bean.Departement;
+import bean.Enseignant;
+import bean.Filiere;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
 import service.DepartementFacade;
@@ -25,18 +27,35 @@ public class DepartementController implements Serializable {
 
     @EJB
     private service.DepartementFacade ejbFacade;
+    @EJB
+    private service.EnseignantFacade enseignantFacade;
+    @EJB
+    private service.FiliereFacade filiereFacade;
     private List<Departement> items = null;
     private Departement selected;
+    private List<Enseignant> enseignants;
+    private List<Filiere> tc;
+    private List<Filiere> licences;
+    private List<Filiere> master;
+    private List<Filiere> cycle;
+
+    
+    public String toDetail(Departement d) {
+        selected = d;
+        tc=filiereFacade.findByDepartm(d, 1);
+        licences=filiereFacade.findByDepartm(d, 2);
+        cycle=filiereFacade.findByDepartm(d, 3);
+        master=filiereFacade.findByDepartm(d, 4);
+        System.out.println("==== licence size== > "+licences.size());
+        System.out.println("===============>>  "+selected);
+        enseignants = enseignantFacade.findByDepartm(selected);
+        System.out.println("==========>enseigna siz==  "+enseignants.size());
+        return "/departement/DepartementDetail?faces-redirect=true";
+
+    }
+
 
     public DepartementController() {
-    }
-
-    public Departement getSelected() {
-        return selected;
-    }
-
-    public void setSelected(Departement selected) {
-        this.selected = selected;
     }
 
     protected void setEmbeddableKeys() {
@@ -76,7 +95,7 @@ public class DepartementController implements Serializable {
 
     public List<Departement> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            items = ejbFacade.findAllDeprtm();
         }
         return items;
     }
@@ -161,5 +180,58 @@ public class DepartementController implements Serializable {
         }
 
     }
+
+    public Departement getSelected() {
+        if (selected == null) {
+            selected = new Departement();
+        }
+        return selected;
+    }
+
+    public void setSelected(Departement selected) {
+        this.selected = selected;
+    }
+
+    public List<Enseignant> getEnseignants() {
+        return enseignants;
+    }
+
+    public void setEnseignants(List<Enseignant> enseignants) {
+        this.enseignants = enseignants;
+    }
+
+    public List<Filiere> getTc() {
+        return tc;
+    }
+
+    public void setTc(List<Filiere> tc) {
+        this.tc = tc;
+    }
+
+    public List<Filiere> getLicences() {
+        return licences;
+    }
+
+    public void setLicences(List<Filiere> licences) {
+        this.licences = licences;
+    }
+
+    public List<Filiere> getMaster() {
+        return master;
+    }
+
+    public void setMaster(List<Filiere> master) {
+        this.master = master;
+    }
+
+    public List<Filiere> getCycle() {
+        return cycle;
+    }
+
+    public void setCycle(List<Filiere> cycle) {
+        this.cycle = cycle;
+    }
+
+   
 
 }

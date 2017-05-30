@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -26,15 +27,46 @@ public class Article implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String titre;
-    private String contenu ;
-        @OneToOne
-    private Enseignant auteur ;
+    private String contenu;
+    private String type;
+    private int priority;
+    @OneToOne
+    private Enseignant auteur;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateCreation ;
+    private Date dateCreation;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateDebut ;
+    private Date dateDebut;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateExpiration ;
+    private Date dateExpiration;
+    private UploadedFile file;
+  
+
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+
+   
+    
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Enseignant getAuteur() {
         return auteur;
@@ -67,7 +99,7 @@ public class Article implements Serializable {
     public void setDateExpiration(Date dateExpiration) {
         this.dateExpiration = dateExpiration;
     }
-    
+
     public String getContenu() {
         return contenu;
     }
@@ -75,7 +107,6 @@ public class Article implements Serializable {
     public void setContenu(String contenu) {
         this.contenu = contenu;
     }
-    
 
     public String getTitre() {
         return titre;
